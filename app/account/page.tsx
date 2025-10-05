@@ -14,14 +14,14 @@ export default function AccountPage() {
   const router = useRouter();
   return (
     <main>
-      <div className="pl-32 w-full h-72 bg-neutral-800 flex items-end justify-center">
+      <div className="w-full h-72 bg-neutral-800 flex items-end justify-center">
         <img
           src={photoURL}
           alt=""
           className="rounded-full translate-y-5 size-32"
         />
       </div>
-      <div className="pl-32 w-full mt-12 flex flex-col items-center">
+      <div className="w-full mt-12 flex flex-col items-center">
         <h1 className="font-bold text-3xl">{creds.user.displayName}</h1>
         <div className="mt-4">
           <h1>Email: {creds.user.email}</h1>

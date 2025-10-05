@@ -21,12 +21,12 @@ export default function Navbar() {
     <>
       <button
         onClick={() => setOpened(true)}
-        className={`border-2 bg-neutral-800 hover:scale-110 absolute top-4 left-4 flex lg:hidden cursor-pointer border-transparent rounded-full p-2 w-max ${opened ? "-translate-y-full" : "translate-y-0"}`}
+        className={`border-2 z-50 bg-neutral-800 hover:scale-110 absolute top-3 left-3  flex lg:hidden cursor-pointer border-transparent rounded-full p-2 w-max transition-transform duration-500 ${opened ? "-translate-y-96" : "translate-y-0"}`}
       >
         <Boxes size={32} />
       </button>
       <nav
-        className={` ${opened ? "translate-x-0" : "-translate-x-full hidden lg:translate-x-0 lg:flex"} transition-transform duration-200 p-4 w-max h-screen ${pathname == "/login" ? "hidden" : "flex"} flex-col justify-between items-center bg-neutral-900`}
+        className={` ${opened ? "translate-x-0" : "-translate-x-full lg:translate-x-0 "} lg:relative fixed z-50 flex transition-transform duration-200 p-4 w-max h-screen ${pathname == "/login" ? "hidden" : "flex"} flex-col justify-between items-center bg-neutral-900`}
       >
         <button
           onClick={() => setOpened(false)}
@@ -37,18 +37,21 @@ export default function Navbar() {
         <div className=" w-max flex flex-col gap-4">
           <Link
             href={"/"}
+            onClick={() => setOpened(false)}
             className="bg-neutral-700 rounded-full p-4 w-max hover:bg-neutral-800 transition-colors duration-100 cursor-pointer"
           >
             <Home className="size-8" />
           </Link>
           <Link
             href={"/store"}
+            onClick={() => setOpened(false)}
             className="bg-neutral-700 rounded-full p-4 w-max hover:bg-neutral-800 transition-colors duration-100 cursor-pointer"
           >
             <LucideShoppingBag className="size-8" />
           </Link>
           <Link
             href={"/cart"}
+            onClick={() => setOpened(false)}
             className="bg-neutral-700 rounded-full p-4 w-max hover:bg-neutral-800 transition-colors duration-100 cursor-pointer"
           >
             <ShoppingCart className="size-8" />
@@ -58,7 +61,7 @@ export default function Navbar() {
         <div className="flex flex-col items-center gap-2">
           {creds?.user.email === "ogirajko248@gmail.com" ? (
             <div className="bg-neutral-900 rounded-full p-4 w-max hover:-translate-y-1.5 transition-transform duration-100">
-              <Link href={"/admin"}>
+              <Link href={"/admin"} onClick={() => setOpened(false)}>
                 <UserStar className="size-8" />
               </Link>
             </div>
@@ -67,12 +70,14 @@ export default function Navbar() {
           )}{" "}
           <Link
             href={"/settings"}
+            onClick={() => setOpened(false)}
             className="bg-neutral-900 rounded-full p-4 w-max hover:-translate-y-1.5 transition-transform duration-100"
           >
             <Settings className="size-8" />
           </Link>
           <Link
             href={"/account"}
+            onClick={() => setOpened(false)}
             className="bg-neutral-900 rounded-full p-4 w-max hover:-translate-y-1.5 transition-transform duration-100"
           >
             <img

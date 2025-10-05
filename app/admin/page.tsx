@@ -13,7 +13,6 @@ async function fetchProducts(): Promise<Product[]> {
     ...(doc.data() as Omit<Product, "id">),
   }));
 }
-
 export default function AdminPage() {
   const {
     data: products,
@@ -27,12 +26,11 @@ export default function AdminPage() {
   });
 
   return (
-    <main className="w-full">
+    <main className="w-full flex flex-col items-center">
       <div className="pl-4 flex w-full justify-between p-2 items-center bg-neutral-900">
         <h1 className="font-bold text-xl lg:text-2xl">Products</h1>
         <AddProductButton />
       </div>
-
       {isLoading && <p className="p-4">Loading products...</p>}
       {isError && <p className="p-4 text-red-500">Failed to load products.</p>}
       {products && <AdminDataTable products={products} />}

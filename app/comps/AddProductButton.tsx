@@ -26,7 +26,7 @@ import { toast } from "sonner";
 export interface Product {
   id: string;
   name: string;
-  price: number | string;
+  price: number;
   stock: number | string;
   type: string;
   imageLink: string;
@@ -136,7 +136,6 @@ export default function AddProductButton() {
                 className="w-56 bg-neutral-800 border-none text-white"
                 align="start"
               >
-                {/** Helper to render a group */}
                 {[
                   {
                     label: "Upper Clothes",
