@@ -21,7 +21,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { firestore } from "../utils/firebase";
 import { addDoc, collection } from "firebase/firestore";
-import { toast } from "sonner";
 
 export interface Product {
   id: string;

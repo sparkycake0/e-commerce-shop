@@ -3,7 +3,11 @@ import { Slider } from "@/components/ui/slider";
 import { useAtom } from "jotai";
 import { quantityAtom } from "../jotai/quantityAtom";
 import { useEffect } from "react";
-export default function QuantitySlider({ stock, productId }) {
+interface SliderParams {
+  stock: number;
+  productId: string;
+}
+export default function QuantitySlider({ stock, productId }: SliderParams) {
   const [quantity, setQuantity] = useAtom(quantityAtom);
   useEffect(() => {
     setQuantity(1);
