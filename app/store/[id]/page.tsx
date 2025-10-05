@@ -6,7 +6,6 @@ import { ChevronLeft } from "lucide-react";
 import type { Product } from "@/app/comps/AddProductButton";
 import AddToCart from "@/app/utils/AddToCart";
 import QuantitySlider from "@/app/comps/QuantitySlider";
-import { quantityAtom } from "@/app/jotai/quantityAtom";
 
 interface ProductPageProps {
   params: { id: string };
@@ -19,7 +18,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound();
   }
   const product = { id: snap.id, ...snap.data() } as Product;
-  let quantity = 1;
   return (
     <main className="h-full w-full flex flex-col items-center justify-center p-6">
       <div className="w-full max-w-lg bg-neutral-900 rounded-2xl p-6 shadow-xl">
@@ -43,14 +41,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <p className="mb-2">{product.description}</p>
           <div className="mb-6 flex flex-col gap-2">
             <p>Quantity: </p>
-            <QuantitySlider quantity={quantity} stock={product.stock} />
+            <QuantitySlider productId={product.id} stock={product.stock} />
           </div>
           <AddToCart
             product={{
               productId: product.id,
               name: product.name,
               price: product.price,
-              quantity: 1,
               imageLink: product.imageLink,
             }}
           />
