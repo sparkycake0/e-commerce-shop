@@ -34,10 +34,13 @@ export default function Store() {
   async function fetchPriceRange() {
     try {
       const snapshot = await getDocs(collection(firestore, "products"));
-      const allProducts: Product[] = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...(doc.data() as Product),
-      }));
+      const allProducts: Product[] = snapshot.docs.map((doc) => {
+        const data = doc.data() as Product;
+        return {
+          ...data,
+          id: doc.id,
+        };
+      });
       setProducts(allProducts);
       const prices = snapshot.docs.map((doc) => doc.data().price);
       if (prices.length > 0) {
@@ -65,7 +68,7 @@ export default function Store() {
         filter.name === "" ||
         product.name.toLowerCase().includes(filter.name.toLowerCase());
       const matchesType = filter.type === "" || product.type === filter.type;
-      let matchesPrice;
+      let matchesPrice: boolean;
       if (filter.selectedPrice === 0) {
         matchesPrice = product.price <= filter.maxPrice;
       } else {
